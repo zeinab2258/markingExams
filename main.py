@@ -142,7 +142,7 @@ contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPL
 contour_image = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)
 
 pashokhname=[0] * 40
-array = list(range(1, 41))
+
 # رسم کانتورهای تشخیص داده شده بر روی تصویر
 for cnt in contours:
     area = cv2.contourArea(cnt)
