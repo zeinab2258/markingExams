@@ -170,26 +170,17 @@ detected_answers = []
 
 
 # پاسخنامه صحیح
-answer_key = [1, 3, 3, 2, 3, 1, 2, 4, 3, 1,
+answer_key = [1, 3, 3, 2, 3, 2, 2, 4, 3, 1,
               4, 3, 4, 1, 2, 3, 3, 4, 2, 4,
               2, 1, 2, 3, 4, 1, 2, 3, 4, 1,
               2, 3, 2, 1, 2, 3, 4, 1, 2, 3]
 
 # محاسبه نمره
 score = 0
-category = 'english'
 for i, answer in enumerate(pashokhname):
-    if i >= 10:
-        category = 'persian'
-        if i == 40:
-            break
-        if answer == answer_key[i]:
-            score += 1
-    else:
-        category = 'persian'
-        if answer == answer_key[i]:
-            score += 1
+    if answer == answer_key[i]:
+        score += 1
 print(f"Final Score: {score} / 40")
-print(category)
+
 
 
