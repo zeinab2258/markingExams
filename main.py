@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 
 def whichGozineh(x):
     print(f"x={x}")
@@ -119,8 +118,6 @@ def whichQuastion(y,x):
 image_path = r'D:\project\prjprogramm\python\pythonProject7\images\new.jpg'
 image = cv2.imread(image_path)
 
-# نمایش تصویر اصلی
-cv2.imwrite(r'D:\project\prjprogramm\python\pythonProject7\images\new.jpg', image)
 
 # تبدیل تصویر به grayscale
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -141,19 +138,13 @@ cv2.imwrite(r'D:\project\prjprogramm\python\pythonProject7\mnt\data\thresh_image
 # پیدا کردن کانتورهای مربوط به گزینه‌ها
 contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-# فیلتر کردن کانتورهای کوچک و بزرگ
-# options_contours = [cnt for cnt in contours if 30 < cv2.boundingRect(cnt)[2] < 300 and 20 < cv2.boundingRect(cnt)[3] < 300]
-
-options_contours = [cnt for cnt in contours]
-#for cnt in contours:
-#    print(cv2.boundingRect(cnt)[2] * cv2.boundingRect(cnt)[3])
-#    print("s")
 # کپی تصویر برای نمایش کانتورهای تشخیص داده شده
 contour_image = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)
+
 pashokhname=[0] * 40
 array = list(range(1, 41))
 # رسم کانتورهای تشخیص داده شده بر روی تصویر
-for cnt in options_contours:
+for cnt in contours:
     area = cv2.contourArea(cnt)
     x, y, w, h = cv2.boundingRect(cnt)  # مختصات و ابعاد ناحیه
     roi = thresh[y:y + h, x:x + w]  # استخراج ناحیه از تصویر
